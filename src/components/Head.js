@@ -4,6 +4,7 @@ import { toggleMenu } from '../utils/appSlice'
 import { Link, Outlet, useNavigate } from 'react-router-dom'
 import { searchResults } from '../utils/searchSlice'
 import { YOUTUBE_SEARCH_API } from '../utils/constants'
+import { getSearchSuggetsions } from '../utils/helpers'
 
 
 const Head = () => {
@@ -14,32 +15,29 @@ const Head = () => {
 
   const dispatch = useDispatch();
   
-  // const navigate = useNavigate()
+  // const navigate = useNavigate();
 
   const items = useSelector(store => store.search)
 
-  // console.log(items)
+  // const getSearchSuggetsions = async (text) => {
+  //   const data = await fetch(YOUTUBE_SEARCH_API + text);
+    // const json = await data.json();
+    // setSearchData(json[1])
 
-  const getSearchSuggetsions = async (text) => {
-    const data = await fetch(YOUTUBE_SEARCH_API + text);
-    const json = await data.json();
-    
-    setSearchData(json[1])
-
-    dispatch(searchResults({
-      [searchText]: json[1]
-    }))
-  }
+    // dispatch(searchResults({
+    //   [searchText]: json[1]
+    // }))
+  // }
 
   useEffect(() => {
-    
     const timer = setTimeout(() => {
-        if(items[searchText]){
-          setSearchData(items[searchText])
-        }else{
-            getSearchSuggetsions(searchText);
-        }
-    }, 200);
+      if(searchText.length > 0){
+        setSearchData(items[0].filter((item, i) =>  i < 10 ? item.toLowerCase().includes(searchText.toLowerCase()):null))
+      }else{
+        setSearchData([])
+      };
+      // getSearchSuggetsions('apple')
+  }, 200);
 
     return () => {
       clearTimeout(timer)
@@ -77,7 +75,7 @@ const Head = () => {
             <button 
             className='border border-black rounded-r-full p-2 bg-gray-300 px-5'>🔍</button>
             {showSearchSuggestion && <ul className='absolute border-x-2 w-96 py-3 rounded-lg bg-white'>
-              {searchData.map((search, i) => <li key={i} className='p-1 font-semibold px-5 bg-white hover:bg-gray-300'>{search}</li>)}
+              {searchData.map((search, i) => <li key={i} className='p-1 font-semibold px-5 bg-white hover:bg-gray-300 overflow-hidden'>{search}</li>)}
             </ul>}
         </div>
         

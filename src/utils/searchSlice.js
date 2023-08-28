@@ -3,10 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const searchSlice = createSlice({
     name: "search",
-    initialState: {},
+    initialState: [],
     reducers: {
         searchResults : (state, action) => {
-            state = Object.assign(state, action.payload)            
+            state[0] = action.payload           
         }
     }
 });
