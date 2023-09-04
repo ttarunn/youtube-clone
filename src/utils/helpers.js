@@ -1,7 +1,7 @@
-import { YOUTUBE_SEARCH_API } from "./constants";
+import { YOUTUBE_VIDEO_BY_KEYWORD_API } from "./constants";
 
-export const getSearchSuggetsions = async () => {
-    const data = await fetch(`${YOUTUBE_SEARCH_API}apple`, { mode: 'no-cors' })
+export const getSearchSuggetsions = async (keyword) => {
+    const data = await fetch(`${YOUTUBE_VIDEO_BY_KEYWORD_API}`)
     // const json = await data.json()
     console.log(data)
     return data

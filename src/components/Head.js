@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { toggleMenu } from '../utils/appSlice'
 import { Link, Outlet, useNavigate } from 'react-router-dom'
 import { searchResults } from '../utils/searchSlice'
-import { YOUTUBE_SEARCH_API } from '../utils/constants'
+import { YOUTUBE_SEARCH_API, YOUTUBE_VIDEO_BY_KEYWORD_API, YOUTUBE_VIDEO_CATEGORY_API } from '../utils/constants'
 import { getSearchSuggetsions } from '../utils/helpers'
 
 
@@ -19,25 +19,24 @@ const Head = () => {
 
   const items = useSelector(store => store.search)
 
-  // const getSearchSuggetsions = async (text) => {
-  //   const data = await fetch(YOUTUBE_SEARCH_API + text);
-    // const json = await data.json();
-    // setSearchData(json[1])
+  const getSearchSuggetsions = async (text) => {
+    const data = await fetch(YOUTUBE_SEARCH_API + text);
+    const json = await data.json();
+    setSearchData(json[1])
 
-    // dispatch(searchResults({
-    //   [searchText]: json[1]
-    // }))
-  // }
+    dispatch(searchResults({
+      [searchText]: json[1]
+    }));    
+  }
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if(searchText.length > 0){
-        setSearchData(items[0].filter((item, i) =>  i < 10 ? item.toLowerCase().includes(searchText.toLowerCase()):null))
-      }else{
-        setSearchData([])
-      };
-      // getSearchSuggetsions('apple')
-  }, 200);
+      if (items[searchText]) {
+        setSearchData(items[searchText]);
+      } else {
+        getSearchSuggetsions(searchText);
+      }
+    }, 200);
 
     return () => {
       clearTimeout(timer)
@@ -65,7 +64,7 @@ const Head = () => {
         <div className='col-span-10 ml-36'>
             <input 
             type='text' 
-            className='border border-black w-96 rounded-l-full p-2 px-4' 
+            className='border border-black w-2/4 rounded-l-full p-2 px-4' 
             placeholder='🔍Search'
             value={searchText}
             onChange={(e)=> setSearchText(e.target.value)}

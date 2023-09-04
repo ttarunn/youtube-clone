@@ -7,7 +7,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import MainPage from "./components/MainPage";
 import VideoContainer from "./components/VideoContainer";
 import Watch from "./components/Watch";
-import SearchResult from "./components/SearchResult";
+import CategoryVideos from "./components/CategoryVideos";
 
 const appRouter = createBrowserRouter([{
   path:"/",
@@ -22,8 +22,8 @@ const appRouter = createBrowserRouter([{
       element:<Watch/>
     },
     {
-      path:"search_results?",
-      element:<MainPage/>
+      path:"category",
+      element:<CategoryVideos/>
     }
   ]
 }]);

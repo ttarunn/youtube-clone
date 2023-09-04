@@ -9,7 +9,7 @@ const Sidebar = () => {
   if(!isMenuOpen) return null;
 
   return (
-    <div className='w-56 shadow-lg mx-5 flex flex-col '>
+    <div className='w-36 shadow-lg mx-5 p-5'>
       <div className='m-2 cursor-pointer'>
         <ul>
           <li to={'/'}><Link>Home</Link></li>
