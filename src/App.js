@@ -23,7 +23,13 @@ const appRouter = createBrowserRouter([{
     },
     {
       path:"category",
-      element:<CategoryVideos/>
+      element:<CategoryVideos/>,
+      children: [
+        {
+          path:"watch",
+          element:<Watch/>
+        }
+      ]
     }
   ]
 }]);
