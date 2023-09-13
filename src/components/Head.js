@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleMenu } from '../utils/appSlice'
-import { Link, Outlet, useNavigate } from 'react-router-dom'
+import { Outlet } from 'react-router-dom'
 import { searchResults } from '../utils/searchSlice'
-import { YOUTUBE_SEARCH_API, YOUTUBE_VIDEO_BY_KEYWORD_API, YOUTUBE_VIDEO_CATEGORY_API } from '../utils/constants'
-import { getSearchSuggetsions } from '../utils/helpers'
+import { YOUTUBE_SEARCH_API } from '../utils/constants'
 
 
 const Head = () => {
@@ -43,9 +42,6 @@ const Head = () => {
     }
   }, [searchText]);
 
-  // const handleNavigate = ()=> {
-  //   navigate("search_results?q=")
-  // }
 
   const handleIsToggle = () => {
     dispatch(toggleMenu());

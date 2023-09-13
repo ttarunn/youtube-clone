@@ -18,19 +18,14 @@ const appRouter = createBrowserRouter([{
       element:<MainPage/>
     },
     {
-      path:"watch",
-      element:<Watch/>
-    },
-    {
       path:"category",
       element:<CategoryVideos/>,
-      children: [
-        {
-          path:"watch",
-          element:<Watch/>
-        }
-      ]
+    },
+    {
+      path:"watch",
+      element:<Watch/>
     }
+    
   ]
 }]);
 function App() {
