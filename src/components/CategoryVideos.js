@@ -12,7 +12,7 @@ const CategoryVideos = () => {
   const id = searchParams.get("q");
 
   async function getCategory(cat){
-    const data = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=30&q=${cat}type=video&regionCode=IN&key=${API_KEY}`);
+    const data = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=1&q=${cat}type=video&regionCode=IN&key=${API_KEY}`);
     const json = await data.json();
     setVideosByCategory(json.items);
     

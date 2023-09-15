@@ -1,18 +1,24 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useSearchParams } from 'react-router-dom'
 import { closeMenu } from '../utils/appSlice'
 import CommentsList from './Comments'
 import LiveChat from './LiveChat'
-import { comments } from '../utils/helper'
+import { getComments } from '../utils/helper'
 const Watch = () => {
-    
+  const [comments, setComments] = useState([])
   const [searchParams] = useSearchParams()
   const id = searchParams.get("v")
 
+  async function cmnts(){
+    const cmnt = await getComments(id);
+    console.log(cmnt)
+    setComments(cmnt)
+  }
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(closeMenu())
+    dispatch(closeMenu());
+    cmnts()
   }, [])
   return (
     <div>
@@ -21,7 +27,7 @@ const Watch = () => {
         <iframe
           
           width="900"
-          height="400"
+          height="500"
           src={"https://www.youtube.com/embed/" + id}
           title="YouTube video player"
           frameBorder="0"

@@ -1,12 +1,11 @@
 import React from 'react'
-
+import { BiUserCircle } from 'react-icons/bi'
 const ChatMsg = ({ name, msg }) => {
   return (
     <div className='mb-2 shadow-sm'>
-        <img
-          className="w-8 ml-1 inline"
-          alt='user'
-          src="https://cdn-icons-png.flaticon.com/512/552/552721.png"
+        <BiUserCircle
+        size={'2rem'}
+          className="ml-1 inline"
         />
         <span className='mx-2 font-bold'>{name}</span>
         <span>{msg}</span>

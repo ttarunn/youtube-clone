@@ -6,7 +6,7 @@ import ChatMsg from "./ChatMsg";
 import { generateName, generateText } from "../utils/helper";
 
 const LiveChat = () => {
-  const [liveMessage, setLiveMesage] = useState("");
+  const [liveMessage, setLiveMessage] = useState("");
 
   const dispatch = useDispatch();
   const messages = useSelector((store) => store.chat.messages);
@@ -33,8 +33,8 @@ const LiveChat = () => {
     };
   }, []);
   return (
-    <>
-      <div className="w-full h-[400px] border border-black bg-slate-100 ml-2 p-2 overflow-y-scroll flex flex-col-reverse rounded-md">
+    <div>
+      <div className="w-full h-[500px] border border-black bg-slate-100 ml-2 p-2 overflow-y-scroll flex flex-col-reverse rounded-md">
         {messages.map((msg, i) => (
           <ChatMsg key={i} name={msg.name} msg={msg.message} />
         ))}
@@ -49,21 +49,21 @@ const LiveChat = () => {
               message: liveMessage,
             })
           );
-          setLiveMesage("");
+          setLiveMessage("");
         }}
       >
         <input
           type="text"
-          className="w-4/5 border border-black pl-2"
+          className="w-4/5 border border-black pl-2 ml-2 rounded-md"
           placeholder="Send Live Message"
           value={liveMessage}
           onChange={(e) => {
-            setLiveMesage(e.target.value);
+            setLiveMessage(e.target.value);
           }}
         />
-        <button className="w-1/5 bg-orange-300">Send</button>
+        <button className="w-[16%] bg-orange-300 rounded-md">Send</button>
       </form>
-    </>
+    </div>
   );
 };
 

@@ -1,32 +1,38 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { toggleMenu } from '../utils/appSlice'
-import { Outlet } from 'react-router-dom'
-import { searchResults } from '../utils/searchSlice'
-import { YOUTUBE_SEARCH_API } from '../utils/constants'
-
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleMenu, toogleTheme } from "../utils/appSlice";
+import { Outlet } from "react-router-dom";
+import { searchResults } from "../utils/searchSlice";
+import { YOUTUBE_SEARCH_API } from "../utils/constants";
+import { BiVideoPlus, BiUserCircle, BiSolidMoon } from "react-icons/bi";
+import { IoIosNotificationsOutline } from "react-icons/io";
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { BsSun } from 'react-icons/bs'
 
 const Head = () => {
-
   const [showSearchSuggestion, setshowSearchSuggestion] = useState(false);
-  const [searchData, setSearchData] = useState([])
-  const [searchText, setSearchText] = useState('');
+  const [searchData, setSearchData] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
   const dispatch = useDispatch();
-  
+
   // const navigate = useNavigate();
 
-  const items = useSelector(store => store.search)
+  const items = useSelector((store) => store.search);
+  const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
+  const isDarkTheme = useSelector((store) => store.app.isDarkTheme);
 
   const getSearchSuggetsions = async (text) => {
     const data = await fetch(YOUTUBE_SEARCH_API + text);
     const json = await data.json();
-    setSearchData(json[1])
+    setSearchData(json[1]);
 
-    dispatch(searchResults({
-      [searchText]: json[1]
-    }));    
-  }
+    dispatch(
+      searchResults({
+        [searchText]: json[1],
+      })
+    );
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -38,48 +44,75 @@ const Head = () => {
     }, 200);
 
     return () => {
-      clearTimeout(timer)
-    }
+      clearTimeout(timer);
+    };
   }, [searchText]);
-
 
   const handleIsToggle = () => {
     dispatch(toggleMenu());
   };
 
   return (
-    <div className='grid grid-flow-col p-5 shadow-lg'>
-        <div className='flex col-span-1'>
-            <img alt='icon' className='w-10 mx-2 cursor-pointer' src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAARVBMVEX///8jHyAgHB0OBQgMAAWlpKQpJSaenZ309PUAAAAIAAD8/Pz5+fna2tqop6dvbW1oZmevrq4tKivFxMQYExRiYGC+vr7Dc4WrAAABB0lEQVR4nO3cS3LCMBAFQGIIIBPbhN/9jxqSyiIsTUnlydB9g1eSNV5MvdUKAAAAAAAAAAAAAAAAXtEwvscwDk3yHabSb2Loy/TRIOHUv8XRH+sHHMrSqR6U+hd1jHSE90P8lHC2/Lc0/0vzMy3WMdynxaFBwu+Jv4uh0cQHAAAAAAAAAIB59jG0ijdcT9sYTtcmK0PncumiuJRz/YD7bbf0ut4f3br+GvQt2PblrXrC3WbpUA/6sXrC/GeY/zvM/5aGmofHZiu0S//M/GoVDwAAAAAAAAAAZsjeuRerN1HL7hPy95fm76DNnzD/Lc3/0rxAJ3v+Xn0AAAAAAAAAAAAAAAD4T74AYhs1O+vt3ioAAAAASUVORK5CYII="
+    <div className="grid grid-flow-col p-5 shadow-lg sticky top-0 bg-white z-10">
+      <div className="flex col-span-1">
+        {isMenuOpen ? (
+          <AiOutlineClose
+            size={"2rem"}
+            className="mx-2 cursor-pointer"
             onClick={() => handleIsToggle()}
-            />
+          />
+        ) : (
+          <AiOutlineMenu
+            size={"2rem"}
+            className="mx-2 cursor-pointer"
+            onClick={() => handleIsToggle()}
+          />
+        )}
 
-            <a href='/'><img alt='youtube-logo' className='w-24 mx-1 mt-2' src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg"
-            /></a>
-        </div>
-        <div className='col-span-10 ml-36'>
-            <input 
-            type='text' 
-            className='border border-black w-2/4 rounded-l-full p-2 px-4' 
-            placeholder='🔍Search'
-            value={searchText}
-            onChange={(e)=> setSearchText(e.target.value)}
-            onFocus={()=> setshowSearchSuggestion(true)}
-            onBlur={()=> setshowSearchSuggestion(false)}
-            />
-            <button 
-            className='border border-black rounded-r-full p-2 bg-gray-300 px-5'>🔍</button>
-            {showSearchSuggestion && <ul className='absolute border-x-2 w-96 py-3 rounded-lg bg-white'>
-              {searchData.map((search, i) => <li key={i} className='p-1 font-semibold px-5 bg-white hover:bg-gray-300 overflow-hidden'>{search}</li>)}
-            </ul>}
-        </div>
-        
-        <div className='col-span-1'>
-            <img alt='user' className='w-8' src="https://cdn-icons-png.flaticon.com/512/552/552721.png"/>
-        </div>
-        <Outlet/>
+        <a href="/">
+          <img
+            alt="youtube-logo"
+            className="w-24 mx-1 mt-2"
+            src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg"
+          />
+        </a>
+      </div>
+      <div className="col-span-9 ml-36">
+        <input
+          type="text"
+          className="border border-black w-2/4 rounded-l-full p-2 px-4"
+          placeholder="🔍Search"
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+          onFocus={() => setshowSearchSuggestion(true)}
+          onBlur={() => setshowSearchSuggestion(false)}
+        />
+        <button className="border border-black rounded-r-full p-2 bg-gray-300 px-5">
+          🔍
+        </button>
+        {showSearchSuggestion && (
+          <ul className="absolute border-x-2 w-96 py-3 rounded-lg bg-white">
+            {searchData.map((search, i) => (
+              <li
+                key={i}
+                className="p-1 font-semibold px-5 bg-white hover:bg-gray-300 overflow-hidden"
+              >
+                {search}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+
+      <div className="col-span-2 flex justify-around">
+        {isDarkTheme ? <BsSun size={"2rem"} className="cursor-pointer" onClick={()=> dispatch(toogleTheme())}/> : <BiSolidMoon size={"2rem"} className="cursor-pointer" onClick={()=> dispatch(toogleTheme())}/>}
+        <BiVideoPlus size={"2rem"} className="cursor-pointer" />
+        <IoIosNotificationsOutline size={"2rem"} className="cursor-pointer" />
+        <BiUserCircle className="w-8 h-8 cursor-pointer" />
+      </div>
+      <Outlet />
     </div>
-  )
-}
+  );
+};
 
-export default Head
+export default Head;

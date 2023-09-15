@@ -1,3 +1,5 @@
+import { API_KEY, COMMENT_API } from "./constants";
+
 export const comments = [
     {
       name: 'Tarun',
@@ -104,4 +106,10 @@ export function generateText(length) {
       counter += 1;
     }
     return result;
+};
+
+export async function getComments(id){
+  const comment = await fetch(`https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=${id}&key=${API_KEY}`);
+  const json = await comment.json();
+  return (json.items);
 }
