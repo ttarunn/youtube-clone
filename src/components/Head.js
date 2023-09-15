@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu, toogleTheme } from "../utils/appSlice";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import { searchResults } from "../utils/searchSlice";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { BiVideoPlus, BiUserCircle, BiSolidMoon } from "react-icons/bi";
@@ -69,18 +69,18 @@ const Head = () => {
           />
         )}
 
-        <a href="/">
+        
           <img
             alt="youtube-logo"
-            className="w-24 mx-1 mt-2"
+            className="w-24 mx-1 mt-[-.5rem]"
             src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg"
           />
-        </a>
+        
       </div>
       <div className="col-span-9 ml-36">
         <input
           type="text"
-          className="border border-black w-2/4 rounded-l-full p-2 px-4 bg-transparent"
+          className={`border w-2/4 rounded-l-full p-2 px-4 bg-transparent`}
           placeholder="🔍Search"
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
