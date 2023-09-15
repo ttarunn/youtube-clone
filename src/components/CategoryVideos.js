@@ -16,7 +16,6 @@ const CategoryVideos = () => {
     const json = await data.json();
     setVideosByCategory(json.items);
     
-    console.log(json.items)
   }
   useEffect(()=> {
     getCategory(id);
@@ -25,7 +24,6 @@ const CategoryVideos = () => {
 
   return (
     <div>
-      <ButtonList/>
       <div className='flex flex-wrap m-3'>
         {videosByCategory.map(video => <CategoryCard video={video} key={video.id.videoId}/>)}
       </div>
