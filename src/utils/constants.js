@@ -6,7 +6,7 @@ export const YOUTUBE_VIDEO_API = `https://youtube.googleapis.com/youtube/v3/vide
 
 export const YOUTUBE_SEARCH_API = "https://corsproxy.io/?http://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q="
 
-export const YOUTUBE_VIDEO_BY_KEYWORD_API = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=2&q=apple&key=${API_KEY}`;
+export const YOUTUBE_VIDEO_BY_KEYWORD_API = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=30&q=apple&key=${API_KEY}`;
 
 
 export const COMMENT_API = 'https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&videoId=ay4MKe1u7Ec&key=' + API_KEY;

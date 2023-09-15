@@ -21,7 +21,7 @@ const Head = () => {
   const items = useSelector((store) => store.search);
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
   const isDarkTheme = useSelector((store) => store.app.isDarkTheme);
-
+  const darkTheme = isDarkTheme ? 'bg-black text-white':'bg-white'
   const getSearchSuggetsions = async (text) => {
     const data = await fetch(YOUTUBE_SEARCH_API + text);
     const json = await data.json();
@@ -53,7 +53,7 @@ const Head = () => {
   };
 
   return (
-    <div className="grid grid-flow-col p-5 shadow-lg sticky top-0 bg-white z-10">
+    <div className={`grid grid-flow-col p-5 shadow-lg sticky top-0 z-10 ${darkTheme}`}>
       <div className="flex col-span-1">
         {isMenuOpen ? (
           <AiOutlineClose
@@ -80,7 +80,7 @@ const Head = () => {
       <div className="col-span-9 ml-36">
         <input
           type="text"
-          className="border border-black w-2/4 rounded-l-full p-2 px-4"
+          className="border border-black w-2/4 rounded-l-full p-2 px-4 bg-transparent"
           placeholder="🔍Search"
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
@@ -91,11 +91,11 @@ const Head = () => {
           🔍
         </button>
         {showSearchSuggestion && (
-          <ul className="absolute border-x-2 w-96 py-3 rounded-lg bg-white">
+          <ul className={`absolute border-x-2 w-96 py-3 rounded-lg ${darkTheme}`}>
             {searchData.map((search, i) => (
               <li
                 key={i}
-                className="p-1 font-semibold px-5 bg-white hover:bg-gray-300 overflow-hidden"
+                className="p-1 font-semibold px-5 hover:bg-gray-300 overflow-hidden"
               >
                 {search}
               </li>

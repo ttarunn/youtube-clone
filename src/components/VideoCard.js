@@ -8,7 +8,7 @@ const VideoCard = ({ video }) => {
 
     
   return (
-    <div className='w-[16rem] shadow-md p-2 m-2 rounded-lg'>
+    <div className='w-[14.4rem] shadow-md p-2 m-2 rounded-lg'>
       <Link to={"watch?v="+video.id}>
         <img src={thumbnails.medium.url} className='rounded-lg hover:opacity-60'/>
         <h1 className='font-bold m-1 overflow-hidden'>{title}</h1>

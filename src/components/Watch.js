@@ -26,8 +26,8 @@ const Watch = () => {
       <div>
         <iframe
           
-          width="900"
-          height="500"
+          width="800px"
+          height="500px"
           src={"https://www.youtube.com/embed/" + id}
           title="YouTube video player"
           frameBorder="0"

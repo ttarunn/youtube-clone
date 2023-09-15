@@ -1,11 +1,15 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const Comments = ({ data }) => {
-  console.log(data)
+
+  const isDarkTheme = useSelector((store) => store.app.isDarkTheme);
+  const darkTheme = isDarkTheme ? 'bg-black text-white border-white':'border-black bg-slate-100'
+  
   const { authorDisplayName, textOriginal, authorProfileImageUrl } = data;
   return (
-    <div className='w-3/5 ml-5 border-l-4 border-black'>
-      <div className=" m-1 bg-gray-50">
+    <div className={`w-3/5 ml-5 border-l-4 ${darkTheme}`}>
+      <div className={`m-1 ${darkTheme}`}>
         <img
           className="w-10 ml-4 inline rounded-full"
           src={authorProfileImageUrl}

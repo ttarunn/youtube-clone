@@ -10,7 +10,8 @@ const LiveChat = () => {
 
   const dispatch = useDispatch();
   const messages = useSelector((store) => store.chat.messages);
-  
+  const isDarkTheme = useSelector((store) => store.app.isDarkTheme);
+  const darkTheme = isDarkTheme ? 'bg-black text-white border-white':'border-black bg-slate-100'
   useEffect(() => {
     const int = setInterval(() => {
       dispatch(
@@ -34,13 +35,13 @@ const LiveChat = () => {
   }, []);
   return (
     <div>
-      <div className="w-full h-[500px] border border-black bg-slate-100 ml-2 p-2 overflow-y-scroll flex flex-col-reverse rounded-md">
+      <div className={`w-full h-[500px] border ml-2 p-2 overflow-y-scroll flex flex-col-reverse rounded-md ${darkTheme}`}>
         {messages.map((msg, i) => (
           <ChatMsg key={i} name={msg.name} msg={msg.message} />
         ))}
       </div>
       <form
-        className="w-full"
+        className={`w-full ${darkTheme}`}
         onSubmit={(e) => {
           e.preventDefault();
           dispatch(
@@ -54,7 +55,7 @@ const LiveChat = () => {
       >
         <input
           type="text"
-          className="w-4/5 border border-black pl-2 ml-2 rounded-md"
+          className={`w-4/5 border pl-2 ml-2 rounded-md ${darkTheme}`}
           placeholder="Send Live Message"
           value={liveMessage}
           onChange={(e) => {
