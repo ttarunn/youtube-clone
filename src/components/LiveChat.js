@@ -41,7 +41,7 @@ const LiveChat = () => {
         ))}
       </div>
       <form
-        className={`w-full ${darkTheme}`}
+        className={`w-full ml-2 rounded-md ${darkTheme}`}
         onSubmit={(e) => {
           e.preventDefault();
           dispatch(
@@ -55,14 +55,14 @@ const LiveChat = () => {
       >
         <input
           type="text"
-          className={`w-4/5 border pl-2 ml-2 rounded-md ${darkTheme}`}
+          className={`w-4/5 border pl-2 rounded-md ${darkTheme}`}
           placeholder="Send Live Message"
           value={liveMessage}
           onChange={(e) => {
             setLiveMessage(e.target.value);
           }}
         />
-        <button className="w-[16%] bg-orange-300 rounded-md">Send</button>
+        <button className="w-[19.5%] bg-orange-300 rounded-md">Send</button>
       </form>
     </div>
   );

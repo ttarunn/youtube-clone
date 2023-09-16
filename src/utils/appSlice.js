@@ -4,7 +4,8 @@ const appSlice = createSlice({
     name:"app",
     initialState: {
         isMenuOpen: true,
-        isDarkTheme: false
+        isDarkTheme: false,
+        videos: []
     },
     reducers: {
         toggleMenu : (state) => {
@@ -15,10 +16,13 @@ const appSlice = createSlice({
         },
         toogleTheme : (state) => {
             state.isDarkTheme = !state.isDarkTheme
+        },
+        addVideos: (state, action) => {
+            state.videos.push(action.payload);
         }
     }
 });
 
-export const { toggleMenu, closeMenu, toogleTheme } = appSlice.actions;
+export const { toggleMenu, closeMenu, toogleTheme, addVideos } = appSlice.actions;
 
 export default appSlice.reducer;

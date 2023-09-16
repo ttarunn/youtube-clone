@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const VideoCard = ({ video }) => {
-    
+    // console.log(video)
     const { channelTitle, title, thumbnails } = video.snippet;
     const { viewCount } = video.statistics
 

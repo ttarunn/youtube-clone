@@ -91,7 +91,7 @@ const Head = () => {
           🔍
         </button>
         {showSearchSuggestion && (
-          <ul className={`absolute border-x-2 w-96 py-3 rounded-lg ${darkTheme}`}>
+          <ul className={`absolute border-x-2 w-[21rem] py-3 rounded-lg ${darkTheme}`}>
             {searchData.map((search, i) => (
               <li
                 key={i}

@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import ButtonList from './ButtonList'
 import { Outlet, useSearchParams } from 'react-router-dom';
 import { API_KEY } from '../utils/constants';
-import VideoCard from './VideoCard';
 import CategoryCard from './CategoryCard';
 
 const CategoryVideos = () => {
@@ -12,7 +10,7 @@ const CategoryVideos = () => {
   const id = searchParams.get("q");
 
   async function getCategory(cat){
-    const data = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=32&q=${cat}type=video&regionCode=IN&key=${API_KEY}`);
+    const data = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=30&q=${cat}type=video&regionCode=IN&key=${API_KEY}`);
     const json = await data.json();
     setVideosByCategory(json.items);
     
