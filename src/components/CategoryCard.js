@@ -3,11 +3,11 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const CategoryCard = ({ video }) => {
-    
+  
     const {thumbnails, channelTitle, title} = video.snippet
     const isDarkTheme = useSelector((store) => store.app.isDarkTheme);
     const darkTheme = isDarkTheme ? 'shadow-white shadow-sm':''
-
+  if (video.id.videoId === undefined) return null
   return (
     <div className={`w-[14.4rem] shadow-md p-2 m-2 rounded-lg ${darkTheme}`}>
       <Link to={"/watch?v="+video.id.videoId}>
