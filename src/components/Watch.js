@@ -74,7 +74,7 @@ const Watch = () => {
         
       </div>
       
-      <div className="m-4">
+      <div className="sm:m-4 w-[98%]">
         <span className="font-bold text-2xl m-4">
           {videoDetails[0]?.statistics?.commentCount} Comments
         </span>
