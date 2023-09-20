@@ -52,14 +52,14 @@ const Watch = () => {
   return (
     <div>
       <div className="flex flex-col sm:flex-row">
-        <div className="sm:w-[800px] w-[24rem]">
+        <div className="sm:w-[800px] w-[23rem] ">
           <iframe
             
             src={"https://www.youtube.com/embed/" + id}
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            className="rounded-lg m-2 sm:w-[800px] h-[32rem] w-[24rem]"
+            className="rounded-lg m-2 sm:w-[800px] sm:h-[32rem] h-[256px] w-[21rem]"
           />
           <div className={`m-2`}>
             {videoDetails.length && (
