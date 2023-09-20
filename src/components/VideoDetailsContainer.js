@@ -13,15 +13,15 @@ const VideoDetailsContainer = ({ details }) => {
     : "border border-black bg-slate-100";
 
   const btnClass = isDarkTheme
-    ? "p-2 rounded-full ml-8 font-semibold bg-black border-2 border-white"
-    : "p-2 rounded-full ml-8 font-semibold bg-slate-100";
+    ? "sm:p-2 p-1 rounded-xl sm:rounded-full ml-8 font-semibold bg-black border-2 border-white"
+    : "sm:p-2 p-1 rounded-xl sm:rounded-full ml-8 font-semibold bg-slate-100";
 
   return (
     <div>
-      <h2 className="font-bold text-xl mb-5">{title}</h2>
+      <h2 className="font-bold text-xl mb-5 ">{title}</h2>
       <div className="flex mb-6 ">
         <BiUserCircle size={"2rem"} />
-        <h2 className="font-bold ml-1 mr-40">{channelTitle}</h2>
+        <h2 className="font-bold ml-1 sm:mr-40">{channelTitle}</h2>
         <button className={btnClass}>Subscribe</button>
         <button className={btnClass}>
           <BiLike className="inline" />
@@ -33,7 +33,7 @@ const VideoDetailsContainer = ({ details }) => {
       </div>
       
       <div className={`p-4 rounded-lg text-justify m-2 ${darkTheme}`}>
-      <h3 className="font-bold mb-4">{viewCount} views  || {publishedAt} Published</h3>
+      <h3 className="font-bold mb-4">{viewCount} views  || Published On: {publishedAt}</h3>
         {description}
       </div>
     </div>

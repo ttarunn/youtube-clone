@@ -13,42 +13,44 @@ import { IoGameController, IoNewspaperSharp } from 'react-icons/io5'
 
 
 const Sidebar = () => {
-  const isMenuOpen = useSelector((store) => store.app.isMenuOpen)
-  const iconCLass = "ml-2 font-bold text-xl";
-  const linkClass='flex w-full border rounded-2xl p-2 mb-3 hover:bg-red-500 hover:text-white'
+  const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
+  
+  const iconCLass = "ml-2 font-bold text-xs sm:text-xl";
+  const linkClass = 'flex w-full border rounded-2xl p-2 mb-3 hover:bg-red-500 hover:text-white'
+  const iconSize = 'sm:text-3xl text-lg'
   if(!isMenuOpen) return null;
 
   return (
-    <div className='w-40 flex flex-col m-2 p-2 sticky top-20 self-start border-r-2 border-black'>
+    <div className='sm:w-40 w-28 flex flex-col m-2 p-2 sticky top-20 self-start border-r-2 border-black '>
       <Link to={'/'} className={linkClass}>
-        <BiHome size={'1.6rem'}/><span className={iconCLass}>Home</span>
+        <BiHome className={iconSize}/><span className={iconCLass}>Home</span>
       </Link>
       <Link to={'/category?q=live'} className={linkClass}>
-        <MdLiveTv size={'1.6rem'}/><span className={iconCLass}>Live</span>
+        <MdLiveTv className={iconSize}/><span className={iconCLass}>Live</span>
       </Link>
       <Link to={'/category?q=music'} className={linkClass}>
-        <IoMdMusicalNote size={'1.6rem'}/><span className={iconCLass}>Music</span>
+        <IoMdMusicalNote className={iconSize}/><span className={iconCLass}>Music</span>
       </Link>
       <Link to={'/category?q=movies'} className={linkClass}>
-        <RiMovie2Line size={'1.6rem'}/><span className={iconCLass}>Movies</span>
+        <RiMovie2Line className={iconSize}/><span className={iconCLass}>Movies</span>
       </Link>
       <Link to={'/category?q=education'} className={linkClass}>
-        <GiGraduateCap size={'1.6rem'}/><span className={iconCLass}>Education</span>
+        <GiGraduateCap className={iconSize}/><span className={iconCLass}>Education</span>
       </Link>
       <Link to={'/category?q=coding'} className={linkClass}>
-        <BsCodeSlash size={'1.6rem'}/><span className={iconCLass}>Coding</span>
+        <BsCodeSlash className={iconSize}/><span className={iconCLass}>Coding</span>
       </Link>
       <Link to={'/category?q=podcast'} className={linkClass}>
-        <MdOutlinePodcasts size={'1.6rem'}/><span className={iconCLass}>Podcast</span>
+        <MdOutlinePodcasts className={iconSize}/><span className={iconCLass}>Podcast</span>
       </Link>
       <Link to={'/category?q=aming'} className={linkClass}>
-        <IoGameController size={'1.6rem'}/><span className={iconCLass}>Gaming</span>
+        <IoGameController className={iconSize}/><span className={iconCLass}>Gaming</span>
       </Link>
       <Link to={'/category?q=news'} className={linkClass}>
-        <IoNewspaperSharp size={'1.6rem'}/><span className={iconCLass}>News</span>
+        <IoNewspaperSharp className={iconSize}/><span className={iconCLass}>News</span>
       </Link>
       <Link to={'/category?q=sorts'} className={linkClass}>
-        <MdSportsBaseball size={'1.6rem'}/><span className={iconCLass}>Sports</span>
+        <MdSportsBaseball className={iconSize}/><span className={iconCLass}>Sports</span>
       </Link>
     </div>
   )

@@ -8,7 +8,7 @@ const Comments = ({ data }) => {
   
   const { authorDisplayName, textOriginal, authorProfileImageUrl } = data;
   return (
-    <div className={`w-3/5 ml-3  mt-2 border-l-4 ${darkTheme}`}>
+    <div className={`w-[98%] ml-3  mt-2 border-l-4 ${darkTheme}`}>
       <div className={`m-1 ${darkTheme}`}>
         <img
           className="w-10 ml-4 inline rounded-full mt-2"

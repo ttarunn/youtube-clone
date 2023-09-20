@@ -22,7 +22,7 @@ const CategoryVideos = () => {
 
   return (
     <div>
-      <div className='flex flex-wrap m-3'>
+      <div className='flex flex-wrap mt-3 sm:m-3 sm:mt-0'>
         {videosByCategory.map(video => <CategoryCard video={video} key={video.id.videoId}/>)}
       </div>
       <Outlet/>

@@ -51,16 +51,15 @@ const Watch = () => {
   }, []);
   return (
     <div>
-      <div className="flex">
-        <div className="w-[800px]">
+      <div className="flex flex-col sm:flex-row">
+        <div className="sm:w-[800px] w-[24rem]">
           <iframe
-            width="800px"
-            height="500px"
+            
             src={"https://www.youtube.com/embed/" + id}
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            className="rounded-lg m-2"
+            className="rounded-lg m-2 sm:w-[800px] h-[32rem] w-[24rem]"
           />
           <div className={`m-2`}>
             {videoDetails.length && (
@@ -68,7 +67,7 @@ const Watch = () => {
             )}
           </div>
         </div>
-        <div className="w-full m-2">
+        <div className="sm:w-full m-2 w-[22rem]">
           <LiveChat />
           {/* {videos.length && videos.map(video => <VideoCard video={video} key={video.id}/>)} */}
         </div>
