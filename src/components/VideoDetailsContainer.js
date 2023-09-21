@@ -13,11 +13,11 @@ const VideoDetailsContainer = ({ details }) => {
     : "border border-black bg-slate-100";
 
   const btnClass = isDarkTheme
-    ? "sm:p-2 p-1 rounded-xl sm:rounded-full ml-8 font-semibold bg-black border-2 border-white"
-    : "sm:p-2 p-1 rounded-xl sm:rounded-full ml-8 font-semibold bg-slate-100";
+    ? "sm:p-2 p-1 rounded-xl sm:rounded-full sm:ml-8 ml-1 font-semibold bg-black border-2 border-white sm:w-40"
+    : "sm:p-2 p-1 rounded-xl sm:rounded-full sm:ml-8 ml-1 font-semibold bg-slate-100 sm:w-40";
 
   return (
-    <div>
+    <div className="w-full p-2">
       <h2 className="font-bold text-xl mb-5 ">{title}</h2>
       <div className="flex mb-6 ">
         <BiUserCircle size={"2rem"} />
@@ -32,9 +32,9 @@ const VideoDetailsContainer = ({ details }) => {
         </button>
       </div>
       
-      <div className={`p-4 rounded-lg text-justify m-2 ${darkTheme}`}>
+      <div className={`p-4 rounded-lg text-justify sm:m-2 ${darkTheme}`}>
       <h3 className="font-bold mb-4">{viewCount} views  || Published On: {publishedAt}</h3>
-        {description}
+      <p className="overflow-hidden sm:w-full">{description}</p>
       </div>
     </div>
   );

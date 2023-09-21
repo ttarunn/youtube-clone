@@ -1,6 +1,8 @@
 import React from 'react'
 import { BiUserCircle } from 'react-icons/bi'
 import { useSelector } from 'react-redux';
+
+
 const ChatMsg = ({ name, msg }) => {
 
 
@@ -9,7 +11,7 @@ const ChatMsg = ({ name, msg }) => {
 
   
   return (
-    <div className={`mb-2 shadow-sm ${darkTheme}`}>
+    <div className={`mb-2 shadow-sm ${darkTheme} `}>
         <BiUserCircle
         size={'2rem'}
           className="ml-1 inline"

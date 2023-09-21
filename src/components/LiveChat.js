@@ -34,14 +34,14 @@ const LiveChat = () => {
     };
   }, []);
   return (
-    <div>
-      <div className={`sm:w-full h-[500px] border ml-2 p-2 overflow-y-scroll flex flex-col-reverse rounded-md ${darkTheme} w-[22rem]`}>
+    <div className="w-12/12">
+      <div className={`h-[500px] border p-2 overflow-y-scroll flex flex-col-reverse rounded-md ${darkTheme}`}>
         {messages.map((msg, i) => (
           <ChatMsg key={i} name={msg.name} msg={msg.message} />
         ))}
       </div>
       <form
-        className={`w-full ml-2 rounded-md ${darkTheme}`}
+        className={`w-full rounded-md ${darkTheme}`}
         onSubmit={(e) => {
           e.preventDefault();
           dispatch(

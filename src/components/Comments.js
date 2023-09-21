@@ -8,14 +8,14 @@ const Comments = ({ data }) => {
   
   const { authorDisplayName, textOriginal, authorProfileImageUrl } = data;
   return (
-    <div className={`w-[90%] sm:ml-3 m-1 mt-2 border-l-4 ${darkTheme}`}>
+    <div className={`w-12/12 sm:ml-3 m-1 mt-2 border-l-4 ${darkTheme}`}>
       <div className={`m-1 ${darkTheme}`}>
         <img
           className="w-10 ml-4 inline rounded-full mt-2"
           src={authorProfileImageUrl}
         />
         <span className="mx-2 font-semibold text-lg">{authorDisplayName}</span>
-        <p className="ml-16">{textOriginal}</p>
+        <p className="ml-16 overflow-hidden">{textOriginal}</p>
       </div>
     </div>
   );

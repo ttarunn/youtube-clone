@@ -22,6 +22,7 @@ const Head = () => {
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
   const isDarkTheme = useSelector((store) => store.app.isDarkTheme);
   const darkTheme = isDarkTheme ? "bg-black text-white shadow-sm shadow-white" : "bg-white";
+
   const getSearchSuggetsions = async (text) => {
     const data = await fetch(YOUTUBE_SEARCH_API + text);
     const json = await data.json();
@@ -54,9 +55,9 @@ const Head = () => {
 
   return (
     <div
-      className={`grid grid-flow-col p-1 shadow-lg sticky top-0 z-10 ${darkTheme} sm:p-5`}
+      className={`flex w-full p-1 shadow-lg sticky top-0 z-10 ${darkTheme} sm:p-5 self-start `}
     >
-      <div className="flex col-span-2">
+      <div className="flex">
         <div className="mt-2.5 mx-1 sm:mt-0 sm:mx-0">
         {isMenuOpen ? (
           <AiOutlineClose
@@ -77,11 +78,11 @@ const Head = () => {
           src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg"
         />
       </div>
-      <div className="col-span-8 sm:w-3/4 ml-10">
+      <div className="sm:w-3/4 sm:ml-24 ml-10">
         <div className="flex">
         <input
           type="text"
-          className={`border w-[70%] sm:w-full rounded-l-full p-2 sm:px-4 bg-transparent`}
+          className={`border w-[70%] sm:w-[full] rounded-l-full p-2 sm:px-4 bg-transparent`}
           placeholder="🔍Search"
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
@@ -109,7 +110,7 @@ const Head = () => {
         )}
       </div>
 
-      <div className={`col-span-2 flex justify-around ml-1 mt-2 gap-1 sm:mt-0`}>
+      <div className={`flex justify-around ml-1 mt-2 gap-1 sm:mt-0 w-56`}>
         {isDarkTheme ? (
           <BsSun
             className="cursor-pointer text-xl sm:text-3xl"
